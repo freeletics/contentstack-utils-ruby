@@ -6,8 +6,14 @@ def getMetadata(itemType=nil, styleType=nil, linkText=nil)
     ContentstackUtils::Model::Metadata.new(element)
 end
 RSpec.describe ContentstackUtils::Model::Options do
-    subject {described_class.new}
+    subject {described_class.new({})}
     linkText = "Text To set Link"
+    describe 'Custom Raise Render' do
+        it 'Custom render without render implementation should fail' do
+            expect{ ContentstackUtilsTest::CustomRaiseOption.new.render_option(ENTRY_CONTENT_BLANK, getMetadata()) }.to raise_error(NotImplementedError, "Implement this method in a child class")
+        end
+    end
+
     describe 'Default Option' do
         it 'Embedded Content Type Entry' do
             expect(subject.render_option(ENTRY_CONTENT_BLANK, getMetadata())).
