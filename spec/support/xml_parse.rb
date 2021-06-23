@@ -11,3 +11,7 @@ def getHTML(xml)
     xml_doc = Nokogiri::XML(appendFrame(xml))
     xml_doc.xpath('//documentfragmentcontainer').inner_html
 end
+
+def getJson(text)
+    JSON.parse(text)
+end
