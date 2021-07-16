@@ -51,5 +51,45 @@ RSpec.describe ContentstackUtils::Model::Metadata do
                 expect(metadata.text).to eq 'TEST'
             end
         end
+
+        it 'Asset Json To metadata' do 
+            doc = getJson(AssetReferenceJson)
+            metadata = ContentstackUtils::Model::Metadata.new(doc["children"][0])
+            expect(metadata.item_type).to eq "asset"
+            expect(metadata.style_type).to eq "display"
+            expect(metadata.item_uid).to eq "blt44asset"
+            expect(metadata.content_type_uid).to eq 'sys_assets'
+            expect(metadata.text).to eq ''
+        end
+
+        it 'Entry Block Json To metadata' do 
+            doc = getJson(EntryReferenceBlockJson)
+            metadata = ContentstackUtils::Model::Metadata.new(doc["children"][0])
+            expect(metadata.item_type).to eq "entry"
+            expect(metadata.style_type).to eq "block"
+            expect(metadata.item_uid).to eq "blttitleuid"
+            expect(metadata.content_type_uid).to eq 'content_block'
+            expect(metadata.text).to eq ''
+        end
+
+        it 'Entry Link Json To metadata' do 
+            doc = getJson(EntryReferenceLinkJson)
+            metadata = ContentstackUtils::Model::Metadata.new(doc["children"][0])
+            expect(metadata.item_type).to eq "entry"
+            expect(metadata.style_type).to eq "link"
+            expect(metadata.item_uid).to eq "bltemmbedEntryuid"
+            expect(metadata.content_type_uid).to eq 'embeddedrte'
+            expect(metadata.text).to eq "/copy-of-entry-final-02"
+        end
+
+        it 'Entry Inline Json To metadata' do 
+            doc = getJson(EntryReferenceInlineJson)
+            metadata = ContentstackUtils::Model::Metadata.new(doc["children"][0])
+            expect(metadata.item_type).to eq "entry"
+            expect(metadata.style_type).to eq "inline"
+            expect(metadata.item_uid).to eq "blttitleUpdateuid"
+            expect(metadata.content_type_uid).to eq 'embeddedrte'
+            expect(metadata.text).to eq ''
+        end
     end
 end
