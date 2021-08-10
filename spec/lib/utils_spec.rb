@@ -401,6 +401,240 @@ RSpec.describe ContentstackUtils do
             expect(result).to eq EntryReferenceInlineHtml
         end
 
+       
+    end
+    describe 'GQL #JsonToHtml' do
+        it 'Should return blank string for blank doc' do
+            entry = getGQLJSONRTE(BlankDocument)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq ""
+            expect(arrayResult).to eq [""]
+        end
+
+        it 'Should return mark text string for PlainTextJson doc' do
+            entry = getGQLJSONRTE(PlainTextJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq PlainTextHtml
+            expect(arrayResult).to eq [PlainTextHtml]
+        end
+
+        it 'Should return paragraph string for ParagraphJson doc' do
+            entry = getGQLJSONRTE(ParagraphJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq ParagraphHtml
+            expect(arrayResult).to eq [ParagraphHtml]
+        end
+
+        it 'Should return H1 string for H1Json doc' do
+            entry = getGQLJSONRTE(H1Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H1Html
+            expect(arrayResult).to eq [H1Html]
+        end
+
+        it 'Should return H2 string for H1Json doc' do
+            entry = getGQLJSONRTE(H2Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H2Html
+            expect(arrayResult).to eq [H2Html]
+        end
+
+        it 'Should return H3 string for H1Json doc' do
+            entry = getGQLJSONRTE(H3Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H3Html
+            expect(arrayResult).to eq [H3Html]
+        end
+
+        it 'Should return H4 string for H1Json doc' do
+            entry = getGQLJSONRTE(H4Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H4Html
+            expect(arrayResult).to eq [H4Html]
+        end
+
+        it 'Should return H5 string for H1Json doc' do
+            entry = getGQLJSONRTE(H5Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H5Html
+            expect(arrayResult).to eq [H5Html]
+        end
+
+        it 'Should return H6 string for H1Json doc' do
+            entry = getGQLJSONRTE(H6Json)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq H6Html
+            expect(arrayResult).to eq [H6Html]
+        end
+
+        it 'Should return Order List string for OrderListJson doc' do
+            entry = getGQLJSONRTE(OrderListJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq OrderListHtml
+            expect(arrayResult).to eq [OrderListHtml]
+        end
+
+        it 'Should return Unorder List string for UnorderListJson doc' do
+            entry = getGQLJSONRTE(UnorderListJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq UnorderListHtml
+            expect(arrayResult).to eq [UnorderListHtml]
+        end
+
+        it 'Should return image string for ImgJson doc' do
+            entry = getGQLJSONRTE(ImgJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq ImgHtml
+            expect(arrayResult).to eq [ImgHtml]
+        end
+
+        it 'Should return Blockquote string for BlockquoteJson doc' do
+            entry = getGQLJSONRTE(BlockquoteJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq BlockquoteHtml
+            expect(arrayResult).to eq [BlockquoteHtml]
+        end
+
+        it 'Should return Code string for CodeJson doc' do
+            entry = getGQLJSONRTE(CodeJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq CodeHtml
+            expect(arrayResult).to eq [CodeHtml]
+        end
+
+        it 'Should return Table string for TableJson doc' do
+            entry = getGQLJSONRTE(TableJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq TableHtml
+            expect(arrayResult).to eq [TableHtml]
+        end
+
+        it 'Should return Link string for LinkInPJson doc' do
+            entry = getGQLJSONRTE(LinkInPJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq LinkInPHtml
+            expect(arrayResult).to eq [LinkInPHtml]
+        end
+
+        it 'Should return Embed string for EmbedJson doc' do
+            entry = getGQLJSONRTE(EmbedJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq EmbedHtml
+            expect(arrayResult).to eq [EmbedHtml]
+        end
+
+        it 'Should return horizontal line string for horizontal line doc' do
+            entry = getGQLJSONRTE(HRJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq '<hr />'
+            expect(arrayResult).to eq ['<hr />']
+        end
+    end
+
+    describe 'GQL #JsonToHtml reference' do
+        it 'Should return blank string for non entry option' do 
+            entry = getGQLJSONRTE(AssetReferenceJson)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq ''
+            expect(arrayResult).to eq ['']
+        end
+
+        it 'Should return asset embedded items' do 
+            entry = getGQLJSONRTE(AssetReferenceJson, EmbedEdges)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq AssetReferenceHtml
+            expect(arrayResult).to eq [AssetReferenceHtml]
+        end
+
+        it 'Should return entry block embedded items' do 
+            entry = getGQLJSONRTE(EntryReferenceBlockJson, EmbedEdges)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq EntryReferenceBlockHtml
+            expect(arrayResult).to eq [EntryReferenceBlockHtml]
+        end
+
+        it 'Should return entry link embedded items' do 
+            entry = getGQLJSONRTE(EntryReferenceLinkJson, EmbedEdges)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq EntryReferenceLinkHtml
+            expect(arrayResult).to eq [EntryReferenceLinkHtml]
+        end
+
+        it 'Should return entry inline embedded items' do 
+            entry = getGQLJSONRTE(EntryReferenceInlineJson, EmbedEdges)
+
+            result = ContentstackUtils::GQL.json_to_html(entry['single_rte'], ContentstackUtils::Model::Options.new())
+            arrayResult = ContentstackUtils::GQL.json_to_html(entry['multiple_rte'], ContentstackUtils::Model::Options.new())
+
+            expect(result).to eq EntryReferenceInlineHtml
+            expect(arrayResult).to eq [EntryReferenceInlineHtml]
+        end
     end
 
     def makeRenderFunction(content, option = ContentstackUtils::Model::Options.new(ENTRY_EMBEDDED_ASSET)) 
