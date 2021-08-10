@@ -15,3 +15,17 @@ end
 def getJson(text)
     JSON.parse(text)
 end
+
+def getGQLJSONRTE(node, item = '""')
+    entry = "{
+        \"single_rte\": {
+            \"json\": #{node},
+            \"embedded_itemsConnection\": #{item}
+        },
+        \"multiple_rte\": {
+            \"json\": [#{node}],
+            \"embedded_itemsConnection\": #{item}
+        }
+    }"
+    getJson(entry)
+end
